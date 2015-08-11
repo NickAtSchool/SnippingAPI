@@ -47,6 +47,8 @@ class ImageController extends Controller
         }
 
         $image->move('uploads/', $id .".". $extension);
+        unset($data["uploader"]);
+        $data["url"] = url('/uploads/'.$data['filename']);
         return response()->json($data);
     }
 
